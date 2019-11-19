@@ -1,10 +1,34 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-export const WidgetPage = (props) => {
-  return (
-    <div>
-      <h4>Weather in the city should be here</h4>
-      <p>{props.match.params.id || 498817}</p>
-    </div>
-  )
+import { Loader } from './Loader';
+
+export class WidgetPage extends Component {
+  componentDidMount() {
+    this.getForecastByCityId();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.match.params.id !== prevProps.match.params.id) {
+      this.getForecastByCityId();
+    }
+  }
+
+  getForecastByCityId() {
+    const spbId = 498817;
+    this.props.getWeatherForecast(this.props.match.params.id || spbId);
+  }
+  
+  render() {
+    if (this.props.isLoading === true) {
+      return(
+        <Loader />
+      )
+    } else {
+      return (
+        <div>
+          <h1>Weather forecast for {this.props.weatherForecast.name}</h1>
+        </div>
+      )
+    }
+  }
 }

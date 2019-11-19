@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router';
 
 import { Navbar } from './components/Navbar';
-import { WidgetPage } from './components/WidgetPage';
+import { ForecastContainer } from './containers/forecastContainer';
 
 export const App = () => {
   return (
@@ -10,13 +10,11 @@ export const App = () => {
       <header className="main-header">
         <Navbar />
       </header>
-      <h1>Weather Forecast</h1>
       <Switch>
-        <Route exact path='/' component={WidgetPage} />
-        <Route path='/moscow/:id' component={WidgetPage} />
-        <Route path='/rostov-na-donu/:id' component={WidgetPage} />
+        <Route exact path='/' component={ForecastContainer} />
+        <Route path='/moscow/:id' component={ForecastContainer} />
+        <Route path='/rostov-na-donu/:id' component={ForecastContainer} />
       </Switch>
-
     </div>
   );
 }
