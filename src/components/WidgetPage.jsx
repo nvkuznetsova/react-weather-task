@@ -27,14 +27,14 @@ export class WidgetPage extends Component {
   render() {
     if (this.props.isLoading === true) {
       return (
-        <Loader />
+        <Loader data-marker="loader"/>
       )
     }
     if (this.props.error.message) {
-      return (<Error message={this.props.error.message} />)
+      return (<Error message={this.props.error.message} data-marker="error" />)
     }
     return (
-      <div>
+      <div data-marker="weather-widget">
         <h1 className="main-title">{this.mainTitle.toUpperCase()}</h1>
         <Widget weather={this.props.widgetHeaderData} />
       </div>

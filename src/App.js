@@ -6,7 +6,7 @@ import { ForecastContainer } from './containers/forecastContainer';
 
 export const App = () => {
   return (
-    <div className="container">
+    <div className="container" data-marker="container">
       <header className="main-header">
         <Navbar />
       </header>
