@@ -1,20 +1,21 @@
 import React from 'react';
-import { Route, Switch } from 'react-router';
+import { Route, Switch, Redirect } from 'react-router';
 
 import { Navbar } from './components/Navbar';
 import { ForecastContainer } from './containers/forecastContainer';
 
-export const App = () => {
-  return (
+import { CITIES_NAMES } from './constants/constants';
+
+export const App = () => (
     <div className="container" data-marker="container">
       <header className="main-header">
         <Navbar />
       </header>
       <Switch>
-        <Route exact path='/' component={ForecastContainer} />
-        <Route path='/moscow/:id' component={ForecastContainer} />
-        <Route path='/rostov-na-donu/:id' component={ForecastContainer} />
+        <Route exact path='/:cityName' component={ForecastContainer} />
+        <Route path='/:cityName' component={ForecastContainer} />
+        <Route path='/:cityName' component={ForecastContainer} />
+        <Route exact path="/" render={() => (<Redirect to={`${CITIES_NAMES.spb}`} />)} /> 
       </Switch>
     </div>
   );
-}

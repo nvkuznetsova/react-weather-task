@@ -1,8 +1,8 @@
 import {
-  FORECAST_IS_LOADING,
-  FORECAST_HAS_ERROR,
-  FORECAST_LOADING_SUCCESS
-} from '../actions/forecast-actions';
+  FORECAST_LOAD_START,
+  FORECAST_LOAD_SUCCESS,
+  FORECAST_LOAD_ERROR,
+} from '../actions/forecast-action-types';
 
 const initState = {
   isLoading: false,
@@ -21,18 +21,18 @@ const initState = {
 
 export const forecastReducer = (state = initState, action) => {
   switch(action.type) {
-    case FORECAST_IS_LOADING: 
+    case FORECAST_LOAD_START: 
       return {
         ...state,
         isLoading: true,
       }
-    case FORECAST_HAS_ERROR: 
+    case FORECAST_LOAD_ERROR: 
       return {
         ...state,
         isLoading: action.payload.isLoading,
         error: action.payload.error,
       }
-    case FORECAST_LOADING_SUCCESS:
+    case FORECAST_LOAD_SUCCESS:
       return {
         ...state,
         isLoading: action.payload.isLoading,

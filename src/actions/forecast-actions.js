@@ -1,14 +1,16 @@
-export const FORECAST_IS_LOADING = 'FORECAST_IS_LOADING';
-export const FORECAST_HAS_ERROR = 'FORECAST_HAS_ERROR';
-export const FORECAST_LOADING_SUCCESS = 'FORECAST_LOADING_SUCCESS';
+import {
+  FORECAST_LOAD_START,
+  FORECAST_LOAD_SUCCESS,
+  FORECAST_LOAD_ERROR,
+} from './forecast-action-types';
 
 export const forecastIsLoading = (cityId) => {
-  return { type: FORECAST_IS_LOADING, payload: cityId, }
+  return { type: FORECAST_LOAD_START, payload: cityId, }
 }
 
 export const forecastHasError = (error, isLoading) => {
   return {
-    type: FORECAST_HAS_ERROR,
+    type: FORECAST_LOAD_ERROR,
     payload: {
       error,
       isLoading,
@@ -18,7 +20,7 @@ export const forecastHasError = (error, isLoading) => {
 
 export const forecastLoadingSuccess = (forecast, isLoading) => {
   return {
-    type: FORECAST_LOADING_SUCCESS,
+    type: FORECAST_LOAD_SUCCESS,
     payload: {
       forecast,
       isLoading,

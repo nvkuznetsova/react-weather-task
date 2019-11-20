@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Loader } from './Loader';
 import { Widget } from './widget/WIdget';
 import { Error } from './Error';
-import { SPB_ID } from '../constants/constants';
+import { CITIES_IDS, CITIES_NAMES } from '../constants/constants';
 
 export class WidgetPage extends Component {
   constructor(props){
@@ -15,13 +15,16 @@ export class WidgetPage extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.match.params.id !== prevProps.match.params.id) {
+    if (this.props.match.params.cityName !== prevProps.match.params.cityName) {
       this.getForecastByCityId();
     }
   }
 
   getForecastByCityId() {
-    this.props.getWeatherForecast(this.props.match.params.id || SPB_ID);
+    const name = this.props.match.params.cityName;
+    const id = (name === CITIES_NAMES.spb) ? CITIES_IDS.spb :
+               (name === CITIES_NAMES.moscow) ? CITIES_IDS.moscow : CITIES_IDS.rostov;
+    this.props.getWeatherForecast(id);
   }
   
   render() {

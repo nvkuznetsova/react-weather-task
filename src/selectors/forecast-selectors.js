@@ -6,13 +6,15 @@ const getName = (state) => state.forecastReducer.weatherForecast.name;
 const getMainWeatherProperties = (state) => state.forecastReducer.weatherForecast.main;
 const getWind = (state) => state.forecastReducer.weatherForecast.wind;
 
+const createProperty = (title, value, mark) => ({title, value, mark})
+
 export const widgetHeaderDataSelector = createSelector(
   getWeather,
   getTemperature,
   getName,
   (weather, temp, name) => {
-    const weatherDescription = {...weather[0]};
-    return Object.assign({}, weatherDescription, { temp, name } );
+    const weatherDescription = weather[0];
+    return { ...weatherDescription, temp, name, };
   }
 );
 
@@ -21,37 +23,13 @@ export const widgetBodyDataSelector = createSelector(
   getWind,
   (mainProps, wind) => {
     const deg = '\u00B0';
-    return [
-      {
-        title: "temperature",
-        value: mainProps.temp,
-        mark: `${deg}C`,
-      },
-      {
-        title: "pressure",
-        value: mainProps.pressure,
-        mark: 'hpa',
-      },
-      {
-        title: "humidity",
-        value: mainProps.humidity,
-        mark: '%',
-      },
-      {
-        title: "minimal temperature",
-        value: mainProps.temp_min,
-        mark: `${deg}C`,
-      },
-      {
-        title: "maximum temperature",
-        value: mainProps.temp_max,
-        mark: `${deg}C`,
-      },
-      {
-        title: "wind",
-        value: wind.speed ,
-        mark: 'm/h',
-      }
-    ];
+    const titles = ['temperature', 'pressure', 'humidity', 'minimal temperature', 'maximum temperature', 'wind'];
+    const weatherProperties = { ...mainProps, ...{ wind: wind.speed } };
+    return Object.keys(weatherProperties).reduce((propsArr, curr, i) => {
+      const mark = curr.includes('temp') ? `${deg}C` : 
+                   curr === 'humidity' ? '%' :
+                   curr === 'pressure' ? 'hpa' : 'm/s';
+      return [...propsArr, createProperty(titles[i], weatherProperties[curr], mark)];
+    }, []);
   }
 );

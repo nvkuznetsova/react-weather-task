@@ -1,23 +1,23 @@
 import { put, takeLatest, all } from 'redux-saga/effects';
 
 import {
-  FORECAST_IS_LOADING,
-  FORECAST_HAS_ERROR,
-  FORECAST_LOADING_SUCCESS
-} from '../actions/forecast-actions';
+  FORECAST_LOAD_START,
+} from '../actions/forecast-action-types';
+import { forecastLoadingSuccess, forecastHasError } from '../actions/forecast-actions';
+
 import { getCityWeatherForecast } from '../services/forecast-service';
 
 function* fetchForecast(action) {
   try {
     const forecast = yield getCityWeatherForecast(action.payload).then(response => response.data);
-    yield put({ type: FORECAST_LOADING_SUCCESS, payload: { forecast, isLoading: false } });
+    yield put(forecastLoadingSuccess(forecast, false));
   } catch (error) {
-    yield put({ type: FORECAST_HAS_ERROR, payload: { error, isLoading: false } });
+    yield put(forecastHasError(error, false));
   }
 }
 
 function* actionWatcher() {
-  yield takeLatest(FORECAST_IS_LOADING, fetchForecast)
+  yield takeLatest(FORECAST_LOAD_START, fetchForecast)
 }
 
 export function* rootSaga() {
