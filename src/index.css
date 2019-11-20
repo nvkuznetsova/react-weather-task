@@ -42,3 +42,49 @@ html {
   color: #fff;
   font-weight: 500;
 }
+
+.main-title {
+  text-align: center;
+  color: #17a2b8;
+}
+
+.widget-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.widget-header-item {
+  margin: 0;
+  padding: 5px 0;
+  font-size: 1.2rem;
+  color: #343a40;
+}
+
+.city-title {
+  font-size: 1.4rem;
+}
+
+.widget-body {
+  min-width: 300px;
+  margin: 10px auto;
+  border-collapse: collapse;
+  font-size: 1.2rem;
+  color: #343a40;
+}
+
+.widget-table-row:nth-child(odd) {
+  background-color: #CCDCFC;
+}
+
+.widget-body-item {
+  padding: 5px;
+  border: 1px solid #6c757d;
+}
+
+.widget-item-title {
+  font-weight: 500;
+}

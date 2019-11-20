@@ -6,7 +6,6 @@ import { forecastIsLoading } from '../actions/forecast-actions';
 const mapStateToProps = (state) => ({
   isLoading: state.forecastReducer.isLoading,
   error: state.forecastReducer.error,
-  weatherForecast: state.forecastReducer.weatherForecast,
 });
 
 const mapDispatchToProps = (dispatch) => {

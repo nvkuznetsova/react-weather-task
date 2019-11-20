@@ -7,7 +7,16 @@ import {
 const initState = {
   isLoading: false,
   error: {},
-  weatherForecast: {},
+  weatherForecast: {
+    coord: {},
+    weather: [],
+    main: {},
+    visibility: 0,
+    wind: {},
+    sys:{},
+    id: 0,
+    name: '',
+  },
 }
 
 export const forecastReducer = (state = initState, action) => {
