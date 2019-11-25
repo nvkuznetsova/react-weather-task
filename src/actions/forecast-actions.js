@@ -8,22 +8,20 @@ export const forecastIsLoading = (cityId) => {
   return { type: FORECAST_LOAD_START, payload: cityId, }
 }
 
-export const forecastHasError = (error, isLoading) => {
+export const forecastHasError = (error) => {
   return {
     type: FORECAST_LOAD_ERROR,
     payload: {
       error,
-      isLoading,
     },
   }
 }
 
-export const forecastLoadingSuccess = (forecast, isLoading) => {
+export const forecastLoadingSuccess = (forecast) => {
   return {
     type: FORECAST_LOAD_SUCCESS,
     payload: {
       forecast,
-      isLoading,
     }
   }
 }

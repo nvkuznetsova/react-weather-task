@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export const WidgetHeader = (props) => {
   return (
@@ -9,3 +10,12 @@ export const WidgetHeader = (props) => {
     </div>
   );
 }
+
+WidgetHeader.propTypes = {
+  widgetHeaderData: PropTypes.shape({
+    name: PropTypes.string,
+    temp: PropTypes.number,
+    main: PropTypes.string,
+    description: PropTypes.string,
+  }).isRequired,
+};

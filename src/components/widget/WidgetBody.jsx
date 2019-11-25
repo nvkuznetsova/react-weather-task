@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { WidgetBodyItem } from './WidgetBodyItem';
 
@@ -13,3 +14,11 @@ export const WidgetBody = (props) => {
     </table>
   );
 }
+
+WidgetBody.propTypes = {
+  widgetBodyData: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string,
+    value: PropTypes.number,
+    mark: PropTypes.string,
+  })).isRequired,
+};

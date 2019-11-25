@@ -9,7 +9,7 @@ import { getCityWeatherForecast } from '../services/forecast-service';
 
 function* fetchForecast(action) {
   try {
-    const forecast = yield getCityWeatherForecast(action.payload).then(response => response.data);
+    const { data: forecast } = yield getCityWeatherForecast(action.payload);
     yield put(forecastLoadingSuccess(forecast, false));
   } catch (error) {
     yield put(forecastHasError(error, false));

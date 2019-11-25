@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export const WidgetBodyItem = (props) => {
   return (
@@ -8,3 +9,9 @@ export const WidgetBodyItem = (props) => {
     </tr>
   );
 }
+
+WidgetBodyItem.propTypes = {
+  title: PropTypes.string,
+  value: PropTypes.number,
+  mark: PropTypes.string,
+};

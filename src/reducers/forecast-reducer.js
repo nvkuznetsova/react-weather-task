@@ -29,13 +29,13 @@ export const forecastReducer = (state = initState, action) => {
     case FORECAST_LOAD_ERROR: 
       return {
         ...state,
-        isLoading: action.payload.isLoading,
+        isLoading: false,
         error: action.payload.error,
       }
     case FORECAST_LOAD_SUCCESS:
       return {
         ...state,
-        isLoading: action.payload.isLoading,
+        isLoading: false,
         weatherForecast: action.payload.forecast,
       }
     default: return state;
