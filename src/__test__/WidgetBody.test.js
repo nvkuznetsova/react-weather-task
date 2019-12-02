@@ -30,6 +30,10 @@ describe('WidgetBody', () => {
     expect(component.find('[data-marker="widget-table"]')).toHaveLength(1);
   });
 
+  it('should match snapshot', () => {
+    expect(component).toMatchSnapshot();
+  })
+
   it('should display all weather props', () => {
     expect(component.find('[data-marker="widget-table-item"]')).toHaveLength(3);
   });

@@ -7,12 +7,12 @@ import { forecastLoadingSuccess, forecastHasError } from '../actions/forecast-ac
 
 import { getCityWeatherForecast } from '../services/forecast-service';
 
-function* fetchForecast(action) {
+export function* fetchForecast(action) {
   try {
     const { data: forecast } = yield getCityWeatherForecast(action.payload);
-    yield put(forecastLoadingSuccess(forecast, false));
+    yield put(forecastLoadingSuccess(forecast));
   } catch (error) {
-    yield put(forecastHasError(error, false));
+    yield put(forecastHasError(error));
   }
 }
 

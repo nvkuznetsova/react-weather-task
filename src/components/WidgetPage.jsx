@@ -53,7 +53,7 @@ export class WidgetPage extends Component {
     }
     return (
       <div data-marker="weather-widget">
-        <h1 className="main-title">{this.mainTitle.toUpperCase()}</h1>
+        <h1 className="main-title" data-marker="widget-title" >{this.mainTitle.toUpperCase()}</h1>
         <Widget />
       </div>
     )
@@ -62,6 +62,6 @@ export class WidgetPage extends Component {
 
 WidgetPage.propTypes = {
   isLoading: PropTypes.bool.isRequired,
-  error: PropTypes.object.isRequired,
+  error: PropTypes.object,
   getWeatherForecast: PropTypes.func.isRequired,
 };

@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`WidgetPage WidgetPage Error should match error snapshot 1`] = `ShallowWrapper {}`;
+
+exports[`WidgetPage WidgetPage Loader should match loading shapshot 1`] = `ShallowWrapper {}`;
+
+exports[`WidgetPage WidgetPage Redirect should match redirect shapshot 1`] = `ShallowWrapper {}`;
+
+exports[`WidgetPage WidgetPage Widget should match widget snapshot 1`] = `ShallowWrapper {}`;

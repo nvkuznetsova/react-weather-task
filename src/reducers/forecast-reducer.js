@@ -25,6 +25,7 @@ export const forecastReducer = (state = initState, action) => {
       return {
         ...state,
         isLoading: true,
+        error: {},
       }
     case FORECAST_LOAD_ERROR: 
       return {
